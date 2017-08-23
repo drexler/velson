@@ -1,0 +1,35 @@
+{
+  #if("$source.companyId" != "")
+    "CompanyId": $source.companyId,
+  #end
+  #if("$source.state.id" != "")
+    "CompanyStateId": $source.state.id,
+  #end
+  #if("$source.categoryCode" != "")
+    "WorkersCompCode": "$source.categoryCode",
+  #end
+  #if("$source.description" != "")
+    "Description": "$source.description",
+  #end
+  #if("$source.clientEdGroupId" != "")
+    "ClientEdGroupsId": $source.clientEdGroupId,
+  #end
+  #if("$source.rate" != "")
+    "Rate": $source.rate,
+  #end
+  #if("$source.experienceRating" != "")
+    "ExperienceRating": $source.experienceRating,
+  #end
+  #if("$source.generalLedger.account" != "")
+    "GlTag": "$source.generalLedger.account",
+  #end
+  #if("$source.generalLedger.offset" != "")
+    "GlOffsetTag": "$source.generalLedger.offset",
+  #end
+  #if("$source.unusedEarningsType" != "")
+    "SubtractPremium": "$source.unusedEarningsType",
+  #end
+  #if("$source.id" != "")
+    "Id": $source.id
+  #end
+}
