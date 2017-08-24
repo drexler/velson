@@ -1,0 +1,11 @@
+{
+   "id": 0,
+   "companyId": 8,
+   "description": "Test from API",
+   "state": {
+     "id": 2,
+     "name": null,
+     "abbreviation": null
+   },
+   "categoryCode": "12390"
+}
