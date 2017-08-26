@@ -517,7 +517,8 @@ public class JSONObject {
         }
         Object object = this.opt(key);
         if (object == null) {
-            throw new JSONException("JSONObject[" + quote(key) + "] not found.");
+            //throw new JSONException("JSONObject[" + quote(key) + "] not found.");
+        	return "";
         }
         return object;
     }
