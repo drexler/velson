@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="lib" path="libs/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="libs/velocity-1.7.jar"/>
+	<classpathentry kind="lib" path="libs/velocity-tools-2.0.jar"/>
+	<classpathentry kind="lib" path="libs/velocity-tools-generic-2.0.jar"/>
+	<classpathentry kind="lib" path="libs/velocity-tools-view-2.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
