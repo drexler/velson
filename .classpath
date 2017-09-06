@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="libs/commons-collections-3.2.2.jar"/>
-	<classpathentry kind="lib" path="C:/Repos/personal/velson/velson/libs/velocity-1.7.jar"/>
-	<classpathentry kind="lib" path="C:/Repos/personal/velson/velson/libs/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="libs/velocity-1.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
