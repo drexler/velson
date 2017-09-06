@@ -1,11 +1,76 @@
 {
-   "id": 0,
-   "companyId": 8,
-   "description": "Test from API",
-   "state": {
-     "id": 2,
-     "name": null,
-     "abbreviation": null
-   },
-   "categoryCode": "12390"
+  "id": 62,
+  "companyId": 100,
+  "shortName": "8d6ef509-e429-44d2-9",
+  "name": "8d6ef509-e429-44d2-9",
+  "address": {
+    "addressLine1": "1112 East Colvin Street",
+    "addressLine2": "Apt 2A",
+    "city": "Syracuse",
+    "state": "NY",
+    "postalCode": "13210",
+    "county": null,
+    "country": null
+  },
+  "contacts": [
+    {
+      "name": null,
+      "designation": null,
+      "email": null,
+      "phones": [
+        {
+          "number": null,
+          "description": null
+        },
+        {
+          "number": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": null,
+      "designation": null,
+      "email": null,
+      "phones": [
+        {
+          "number": null,
+          "description": null
+        }
+      ]
+    }
+  ],
+  "generalLedgerAccount": null,
+  "taxingEntityInPa": {
+    "id": null,
+    "name": null,
+    "abbreviation": null
+  },
+  "defaultLocalTaxingEntity": {
+    "id": null,
+    "name": null,
+    "abbreviation": null
+  },
+  "worksiteId": null,
+  "taxReturnAccount": {
+    "number": null,
+    "isPrimary": false
+  },
+  "isAddressUsedOnCheck": false,
+  "isAvailableForEmployeeAssignment": false,
+  "defaultHomeStateTax": {
+    "id": 2,
+    "isDefaultForNewEmployees": true
+  },
+  "defaultPayRate": null,
+  "defaultEmployeeRateId": null,
+  "bankAccounts": [
+    {
+      "id": 24,
+      "bankName": null,
+      "routingNumber": null,
+      "accountNumber": null,
+      "designation": "payroll"
+    }
+  ]
 }

@@ -13,6 +13,7 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 
 public class VTLRunner {
@@ -21,6 +22,7 @@ public class VTLRunner {
     	VTLRunner vtl = new VTLRunner();
         VelocityEngine ve = new VelocityEngine();
         StringWriter sw = new StringWriter();
+        JSONObject formattedOutput = null;
 
         try {
         	
@@ -37,13 +39,22 @@ public class VTLRunner {
             VelocityContext context = new VelocityContext();
             context.put("source", jsonObj);  
             t.merge(context, sw);
+            formattedOutput = new JSONObject(sw.toString());
 
         }
+       
         catch(Exception e) {
-        	System.out.println(e);
+        	if(e instanceof JSONException) {
+        		System.out.println("Invalid JSON generated. See: " + e.getMessage());
+        		System.out.println("================================================");
+        		System.out.println(sw);
+        	} else {
+        		System.out.println(e);
+        	}
         }
-
-        System.out.println(sw);
+        if(formattedOutput != null) {
+        	System.out.println(formattedOutput.toString(3));
+        }  
     }
     
     public String getFileContents(String fileName) throws IOException {
