@@ -10,6 +10,10 @@ dependencies {
    compile fileTree(dir: 'libs', include: '*.jar')
 }
 
- sourceSets { main { resources { srcDir 'src/main/java'	} }	}
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+sourceSets { main { resources { srcDir 'src/main/java'	} }	}
 
 mainClassName = 'com.github.drexler.VTLRunner'
