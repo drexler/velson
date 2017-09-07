@@ -1,0 +1,21 @@
+#setup environment
+language: node_js
+node_js:
+  - "7"
+
+# build results
+notifications:
+    email: false
+
+# target OS
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+
+# build
+install:
+    - npm install -g webpack
+before_script: npm install
+script: 'webpack'
