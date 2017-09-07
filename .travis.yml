@@ -1,0 +1,18 @@
+#setup environment
+language: java
+
+#Java versions
+jdk:
+  - oraclejdk9
+  - oraclejdk8
+
+# build results
+notifications:
+    email: false
+
+# target OS
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
