@@ -41,6 +41,7 @@ public class VTLRunner {
          context.put("source", jsonObj);
          t.merge(context, sw);
          formattedOutput = new JSONObject(sw.toString());
+         formattedOutput = new JSONObject(TransformerUtils.deleteGhostProperties(formattedOutput.toString(3)));
       }
       catch (Exception e)
       {
