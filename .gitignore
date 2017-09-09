@@ -3,3 +3,5 @@
 **/.metadata
 .gradle/
 **/build/
+.classpath
+.project
