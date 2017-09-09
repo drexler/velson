@@ -7,11 +7,16 @@ repositories {
 }
 
 dependencies {
-   compile fileTree(dir: 'libs', include: '*.jar')
+   compile(
+     [group: 'org.apache.velocity', name: 'velocity', version: '1.7'],
+     [group: 'commons-lang', name: 'commons-lang', version: '2.6'],
+     [group: 'commons-collections', name: 'commons-collections', version: '3.2.2']
+   )
+
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+    gradleVersion = '3.5'
 }
 
 sourceSets { main { resources { srcDir 'src/main/java'	} }	}
