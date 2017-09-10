@@ -493,6 +493,15 @@ public class JSONArray implements Iterable<Object> {
     public int length() {
         return this.myArrayList.size();
     }
+    
+    /**
+     * Get the number of elements in the JSONArray, included nulls.
+     *
+     * @return The length (or size).
+     */
+    public int size() {
+        return this.length();
+    }
 
     /**
      * Get the optional object value associated with an index.
