@@ -13,18 +13,23 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.log.NullLogChute;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
+
+import org.json.JSONException;
+
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 import net.minidev.json.parser.ParseException;
 
 
-public class VTLRunner {
+public class VelocityTransformer
+{
    public static void main(String args[])
    {
-      VTLRunner      vtl            = new VTLRunner();
-      VelocityEngine ve             = new VelocityEngine();
-      StringWriter   sw             = new StringWriter();
-      JSONObject     compressedJson = null;
+      VelocityTransformer vtl = new VelocityTransformer();
+      VelocityEngine      ve  = new VelocityEngine();
+      StringWriter        sw  = new StringWriter();
+
+      org.json.JSONObject formattedJson = null;
 
       try
       {
@@ -33,22 +38,28 @@ public class VTLRunner {
          ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
          ve.init();
 
-         String     templatePath  = "testtemplate.vm";
-         Template   t             = ve.getTemplate(templatePath);
-         String     jsonFile      = vtl.getFileContents("sample.json");
-         JSONObject awsJsonObject = (JSONObject)JSONValue.parseWithException(jsonFile);
+         String   templatePath = "testtemplate.vm";
+         Template template     = ve.getTemplate(templatePath);
+         String   jsonString   = vtl.getFileContents("sample.json");
+         formattedJson = TransformerUtils.formatJson(jsonString);
+
+         JSONObject awsJsonObject = (JSONObject)JSONValue.parseWithException(jsonString);
 
          VelocityContext context = new VelocityContext();
          context.put("source", awsJsonObject);
-         t.merge(context, sw);
+         template.merge(context, sw);
 
-         compressedJson = (JSONObject)JSONValue.parseWithException(sw.toString());
+         formattedJson = TransformerUtils.formatJson(sw.toString());
+         if (formattedJson != null)
+         {
+            Console.print(formattedJson.toString(3));
+         }
       }
       catch (Exception e)
       {
-         if (e instanceof ParseException)
+         String message = e.getMessage();
+         if (e instanceof JSONException)
          {
-            String message = e.getMessage();
             System.out.println("Invalid JSON. See: " + message);
             System.out.println("================================================");
             Console.print(sw.toString(), TransformerUtils.getErrorLineNumber(message));
@@ -57,10 +68,6 @@ public class VTLRunner {
          {
             System.out.println(e);
          }
-      }
-      if (compressedJson != null)
-      {
-         Console.print(TransformerUtils.decompressJsonString(compressedJson.toString()));
       }
    }
 
