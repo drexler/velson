@@ -2,6 +2,7 @@ package com.github.drexler;
 
 import java.io.LineNumberReader;
 import java.io.StringReader;
+import org.json.JSONObject;
 
 public class TransformerUtils {
    public static int getErrorLineNumber(String errorMessage)
@@ -45,5 +46,11 @@ public class TransformerUtils {
         // throw new Exception("Error removing missing properties: " + e.getMessage());
       }
       return cleanedTransform.toString();
+   }
+
+   public static String decompressJsonString(String compressedString)
+   {
+     JSONObject json = new JSONObject(compressedString);
+     return json.toString(3);
    }
 }
