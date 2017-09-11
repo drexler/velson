@@ -21,9 +21,9 @@ import net.minidev.json.parser.ParseException;
 public class VTLRunner {
    public static void main(String args[])
    {
-      VTLRunner      vtl             = new VTLRunner();
-      VelocityEngine ve              = new VelocityEngine();
-      StringWriter   sw              = new StringWriter();
+      VTLRunner      vtl            = new VTLRunner();
+      VelocityEngine ve             = new VelocityEngine();
+      StringWriter   sw             = new StringWriter();
       JSONObject     compressedJson = null;
 
       try
@@ -33,17 +33,16 @@ public class VTLRunner {
          ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
          ve.init();
 
-         String   templatePath = "testtemplate.vm";
-         Template t            = ve.getTemplate(templatePath);
-         String   jsonFile     = vtl.getFileContents("sample.json");
-         JSONObject awsJsonObject = (JSONObject) JSONValue.parseWithException(jsonFile);
+         String     templatePath  = "testtemplate.vm";
+         Template   t             = ve.getTemplate(templatePath);
+         String     jsonFile      = vtl.getFileContents("sample.json");
+         JSONObject awsJsonObject = (JSONObject)JSONValue.parseWithException(jsonFile);
 
          VelocityContext context = new VelocityContext();
          context.put("source", awsJsonObject);
          t.merge(context, sw);
 
-          compressedJson = (JSONObject) JSONValue.parseWithException(sw.toString());
-
+         compressedJson = (JSONObject)JSONValue.parseWithException(sw.toString());
       }
       catch (Exception e)
       {
