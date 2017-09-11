@@ -13,17 +13,18 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.log.NullLogChute;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
-import org.json.JSONObject;
-import org.json.JSONException;
+import net.minidev.json.JSONObject;
+import net.minidev.json.JSONValue;
+import net.minidev.json.parser.ParseException;
 
 
 public class VTLRunner {
    public static void main(String args[])
    {
-      VTLRunner      vtl             = new VTLRunner();
-      VelocityEngine ve              = new VelocityEngine();
-      StringWriter   sw              = new StringWriter();
-      JSONObject     formattedOutput = null;
+      VTLRunner      vtl            = new VTLRunner();
+      VelocityEngine ve             = new VelocityEngine();
+      StringWriter   sw             = new StringWriter();
+      JSONObject     compressedJson = null;
 
       try
       {
@@ -32,23 +33,23 @@ public class VTLRunner {
          ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
          ve.init();
 
-         String   templatePath = "testtemplate.vm";
-         Template t            = ve.getTemplate(templatePath);
-         String   jsonFile     = vtl.getFileContents("sample.json");
+         String     templatePath  = "testtemplate.vm";
+         Template   t             = ve.getTemplate(templatePath);
+         String     jsonFile      = vtl.getFileContents("sample.json");
+         JSONObject awsJsonObject = (JSONObject)JSONValue.parseWithException(jsonFile);
 
-         JSONObject      jsonObj = new JSONObject(jsonFile);
          VelocityContext context = new VelocityContext();
-         context.put("source", jsonObj);
+         context.put("source", awsJsonObject);
          t.merge(context, sw);
-         formattedOutput = new JSONObject(sw.toString());
-         formattedOutput = new JSONObject(TransformerUtils.deleteGhostProperties(formattedOutput.toString(3)));
+
+         compressedJson = (JSONObject)JSONValue.parseWithException(sw.toString());
       }
       catch (Exception e)
       {
-         if (e instanceof JSONException)
+         if (e instanceof ParseException)
          {
             String message = e.getMessage();
-            System.out.println("Invalid JSON generated. See: " + message);
+            System.out.println("Invalid JSON. See: " + message);
             System.out.println("================================================");
             Console.print(sw.toString(), TransformerUtils.getErrorLineNumber(message));
          }
@@ -57,9 +58,9 @@ public class VTLRunner {
             System.out.println(e);
          }
       }
-      if (formattedOutput != null)
+      if (compressedJson != null)
       {
-         Console.print(formattedOutput.toString(3));
+         Console.print(TransformerUtils.decompressJsonString(compressedJson.toString()));
       }
    }
 
