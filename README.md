@@ -12,6 +12,8 @@ Features:
 * Checks for duplicate properties within generated JSON.
 * Provides a well formatted JSON output.
 
+**Note: This doesn't mimick [AWS Mapping Template built-in functions and variables](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html) currently.*
+
 
 ##### Prerequisite
 [Java 1.8](https://aws.amazon.com/documentation/apigateway/) or greater.
@@ -39,7 +41,3 @@ the terminal. See:
 * Generate the project: `./gradlew eclipse`
 * Open Eclipse with the parent directory of the *velson* project as its workspace.
 * Use Eclipse's *Import Project* menu to load the project as existing Gradle Project
-
-
-<br/><br/>
-***This is still experimental and under development...warts & all!!***
