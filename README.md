@@ -6,7 +6,9 @@ such as request and response bodies,will be truncated by [AWS API Gateway](https
 to the http integration backend, debugging a faulty transform becomes guesswork if the error location is within the truncated portion. This tool
 aims to provide the full transform output by mimicking how [AWS API Gateway](https://aws.amazon.com/documentation/apigateway/) transforms a JSON-formated request/response body with the Integration Request/Response Method's mapping template.
 
-Features:
+![velson](https://user-images.githubusercontent.com/1205434/30297765-e5e95418-9716-11e7-89f7-78fb3f392071.gif)
+
+##### Features:
 * Indicating error-causing line number within a mapping template if transform fails.
 * Checks for malformed JSON - highlights which line and where.
 * Checks for duplicate properties within generated JSON.
