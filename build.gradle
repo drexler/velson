@@ -24,4 +24,4 @@ task wrapper(type: Wrapper) {
 
 sourceSets { main { resources { srcDir 'src/main/java'	} }	}
 
-mainClassName = 'com.github.drexler.VTLRunner'
+mainClassName = 'com.github.drexler.VelocityTransformer'

@@ -48,9 +48,11 @@ public class TransformerUtils {
       return cleanedTransform.toString();
    }
 
-   public static String decompressJsonString(String compressedString)
+   public static JSONObject formatJson(String jsonString)
    {
-     JSONObject json = new JSONObject(compressedString);
-     return json.toString(3);
+     return new JSONObject(jsonString);
+
    }
+
+
 }
