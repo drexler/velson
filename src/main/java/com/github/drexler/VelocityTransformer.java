@@ -48,9 +48,11 @@ public class VelocityTransformer
 
          ToolManager toolManager = new ToolManager();
          toolManager.configure("velocity-tools.xml");
-         VelocityContext context = new VelocityContext(toolManager.createContext());
 
+         VelocityContext context = new VelocityContext(toolManager.createContext());
+         context.put("input", new InputTool(formattedJson.toString()));
          context.put("source", awsJsonObject);
+
          template.merge(context, sw);
 
          formattedJson = TransformerUtils.formatJson(sw.toString());

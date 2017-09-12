@@ -2,6 +2,10 @@
     <data type="number" key="TOOLS_VERSION" value="2.0"/>
     <data type="boolean" key="GENERIC_TOOLS_AVAILABLE" value="true"/>
     <toolbox scope="application">
+
+       <!-- Custom tools -->
+       <!-- <tool class="com.github.drexler.InputTool"/> -->
+
         <tool class="org.apache.velocity.tools.generic.AlternatorTool"/>
         <tool class="org.apache.velocity.tools.generic.DisplayTool"/>
         <tool class="org.apache.velocity.tools.generic.MathTool"/>
