@@ -11,11 +11,15 @@ dependencies {
    compile(
      [group: 'commons-lang', name: 'commons-lang', version: '2.6'],
      [group: 'commons-collections', name: 'commons-collections', version: '3.2.2'],
-     [group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.12']
+     [group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.12'],
+     [group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0']
    )
    // Custom json-smart implemented as a linked hash map
    // Custom velocity 1.7 build.
    compile fileTree(dir: 'libs', include: '*.jar')
+   runtime(
+     [group: 'commons-digester', name: 'commons-digester', version: '2.1']
+   )
 }
 
 task wrapper(type: Wrapper) {

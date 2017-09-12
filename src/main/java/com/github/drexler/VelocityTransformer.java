@@ -13,6 +13,7 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.log.NullLogChute;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
+import org.apache.velocity.tools.ToolManager;
 
 import org.json.JSONException;
 
@@ -45,7 +46,10 @@ public class VelocityTransformer
 
          JSONObject awsJsonObject = (JSONObject)JSONValue.parseWithException(jsonString);
 
-         VelocityContext context = new VelocityContext();
+         ToolManager toolManager = new ToolManager();
+         toolManager.configure("velocity-tools.xml");
+         VelocityContext context = new VelocityContext(toolManager.createContext());
+
          context.put("source", awsJsonObject);
          template.merge(context, sw);
 
