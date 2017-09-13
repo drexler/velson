@@ -14,7 +14,13 @@ aims to provide the full transform output by mimicking how [AWS API Gateway](htt
 * Checks for duplicate properties within generated JSON.
 * Provides a well formatted JSON output.
 
-**Note: This doesn't mimick [AWS Mapping Template built-in functions and variables](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html) currently.*
+**Note: Not all [AWS Mapping Template built-in functions and variables](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html) are currently supported.*
+
+Built-in Functions | Description | Supported |
+--- | --- |--- |
+*$input.json(x)* | Evaluates a JSONPath expression and returns the results as a JSON string. |`yes`
+
+
 
 
 ##### Prerequisite
