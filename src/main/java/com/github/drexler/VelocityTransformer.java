@@ -15,11 +15,9 @@ import org.apache.velocity.runtime.log.NullLogChute;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.apache.velocity.tools.ToolManager;
 
+import org.json.JSONObject;
 import org.json.JSONException;
 
-import net.minidev.json.JSONObject;
-import net.minidev.json.JSONValue;
-import net.minidev.json.parser.ParseException;
 
 
 public class VelocityTransformer
@@ -30,7 +28,7 @@ public class VelocityTransformer
       VelocityEngine      ve  = new VelocityEngine();
       StringWriter        sw  = new StringWriter();
 
-      org.json.JSONObject formattedJson = null;
+      JSONObject formattedJson = null;
 
       try
       {
@@ -44,15 +42,11 @@ public class VelocityTransformer
          String   jsonString   = vtl.getFileContents("sample.json");
          formattedJson = TransformerUtils.formatJson(jsonString);
 
-         JSONObject awsJsonObject = (JSONObject)JSONValue.parseWithException(jsonString);
-
          ToolManager toolManager = new ToolManager();
          toolManager.configure("velocity-tools.xml");
 
          VelocityContext context = new VelocityContext(toolManager.createContext());
          context.put("input", new InputTool(formattedJson.toString()));
-         context.put("source", awsJsonObject);
-
          template.merge(context, sw);
 
          formattedJson = TransformerUtils.formatJson(sw.toString());
