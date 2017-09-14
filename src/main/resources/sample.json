@@ -7,6 +7,10 @@
       {
         "itemOne": 1,
         "test": "here"
+      },
+      {
+        "itemOne": 2,
+        "test": "there"
       }
     ],
     "booleanProperty": true
