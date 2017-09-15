@@ -1,4 +1,4 @@
-package com.github.drexler;
+package com.drexler.velson;
 
 import java.util.*;
 
@@ -26,7 +26,7 @@ public class JsonParser {
         String jsonPath = "$";
         if(json != JSONObject.NULL) {
             readObject(object, jsonPath);
-        }   
+        }
     }
 
     private void readObject(JSONObject object, String jsonPath) {
@@ -37,30 +37,30 @@ public class JsonParser {
             Object value = object.get(key);
             jsonPath = parentPath + "." + key;
 
-            if(value instanceof JSONArray) {            
+            if(value instanceof JSONArray) {
                 readArray((JSONArray) value, jsonPath);
             }
             else if(value instanceof JSONObject) {
                 readObject((JSONObject) value, jsonPath);
             } else { // is a value
-                this.pathList.add(jsonPath);    
-            }          
-        }  
+                this.pathList.add(jsonPath);
+            }
+        }
     }
 
-    private void readArray(JSONArray array, String jsonPath) {      
+    private void readArray(JSONArray array, String jsonPath) {
         String parentPath = jsonPath;
         for(int i = 0; i < array.length(); i++) {
-            Object value = array.get(i);        
+            Object value = array.get(i);
             jsonPath = parentPath + "[" + i + "]";
 
             if(value instanceof JSONArray) {
                 readArray((JSONArray) value, jsonPath);
-            } else if(value instanceof JSONObject) {                
+            } else if(value instanceof JSONObject) {
                 readObject((JSONObject) value, jsonPath);
             } else { // is a value
                 this.pathList.add(jsonPath);
-            }       
+            }
         }
     }
 
