@@ -1,7 +1,15 @@
 package com.drexler.velson.tools;
 
-import com.jayway.jsonpath.*;
+import com.jayway.jsonpath.Configuration;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.PathNotFoundException;
 
+/**
+ * InputTool provides a custom Velocity Tool similar to AWS built-in $input function
+ * for API Gateway mapping templates.
+ *
+ * @author drexler
+ */
 public class InputTool
 {
    private Object document;
