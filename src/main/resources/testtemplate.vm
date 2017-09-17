@@ -28,6 +28,10 @@
     "arrayProperty": $source.arrayProperty.getClass().getName(),
     "booleanProperty": $source.booleanProperty.getClass().getName(),
     "missingProperty": "$source.missingProperty.getClass().getName()"
+  },
+  "util": {
+    "base64EncodedStringProperty": "$util.base64Encode($source.stringProperty)",
+    "originalStringPropertyDecoded": "$util.base64Decode($util.base64Encode($source.stringProperty))"
   }
 
 }

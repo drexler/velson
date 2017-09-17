@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import org.json.JSONException;
 
 import com.drexler.velson.tools.InputTool;
+import com.drexler.velson.tools.UtilTool;
 
 /**
  * <p>
@@ -90,6 +91,7 @@ public class VelsonEngine
 
          VelocityContext context = new VelocityContext(toolManager.createContext());
          context.put("input", new InputTool(formattedJson.toString()));
+         context.put("util", new UtilTool());
          template.merge(context, writer);
 
          formattedJson = TransformerUtils.formatJson(writer.toString());
