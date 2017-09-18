@@ -72,4 +72,19 @@ public class TransformerUtils {
       String malformedJson    = errorMessage.substring(jsonBodyPosition + location.length()).trim();
       return malformedJson;
    }
+
+   public static String getErrorReason(String errorMessage)
+   {
+      if (errorMessage.length() == 0)
+      {
+         return null;
+      }
+
+      String location = "reason:";
+
+      int    reasonPosition = errorMessage.lastIndexOf(location);
+      int    malformedBodyLocation = errorMessage.lastIndexOf("malformedJson");
+      String reason    = errorMessage.substring(reasonPosition + location.length(), malformedBodyLocation).trim();
+      return reason;
+   }
 }

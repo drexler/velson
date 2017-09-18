@@ -102,7 +102,7 @@ public class VelsonEngine
          if (e instanceof JSONException)
          {
             String malformedJson = formattedJson == null ? jsonString : writer.toString();
-            String message       = "Invalid JSON. See: " + e.getMessage() + "\n" +
+            String message       = "reason: " + "Invalid JSON. See: " + e.getMessage() + "\n" +
                                    "malformedJson: " + "\n" + malformedJson;
             throw new TransformException(message, e);
          }
