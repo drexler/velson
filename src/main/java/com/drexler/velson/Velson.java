@@ -21,6 +21,7 @@ public class Velson
          if (rootCause instanceof JSONException)
          {
             String message = e.getMessage();
+            System.out.println("Reason: " + TransformerUtils.getErrorReason(message));
             Console.print(TransformerUtils.getMalformedJson(message),
                           TransformerUtils.getErrorLineNumber(message));
          }
