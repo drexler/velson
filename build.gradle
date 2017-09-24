@@ -3,6 +3,9 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
 
+archivesBaseName = "velson"
+version = '0.1.0'
+
 repositories {
     mavenCentral()
 }
