@@ -48,6 +48,13 @@ public class VelsonEngineTest
    public void givenFileSystemLocaleEngineShouldUseSpecifiedFiles()
    {
       String testClassPath = VelsonEngineTest.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+      // .getPath() returns a nix-style path, which breaks on Windows as it has a starting forward slash
+      // Example: /C:/dir/foo/build/classes
+      if (System.getProperty("os.name").toLowerCase().contains("windows"))
+      {
+         testClassPath = testClassPath.substring(1);
+      }
+
       String testResourceFolderPath = testClassPath + "../../resources/test/";
       String templatePath = testResourceFolderPath + template;
       String jsonFilePath = testResourceFolderPath + jsonFile;
