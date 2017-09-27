@@ -16,7 +16,7 @@
     "nullPropertyViaJson": $input.json('$.nullProperty'),
     "stringPropertyViaJson": $input.json('$.stringProperty'),
     "arrayPropertyViaJson": $input.json('$.arrayProperty'),
-    "arrayPropertyTestViaJson": $input.json('$.arrayProperty[0].test'),
+    "arrayPropertyPropertyOneViaJson": $input.json('$.arrayProperty[0].propertyOne'),
     "booleanPropertyViaJson": $input.json('$.booleanProperty'),
     "missingPropertyViaJson": $input.json('$.missingProperty')
   },

@@ -1,0 +1,18 @@
+{
+    "integerProperty": 1,
+    "numberProperty": 2.6,
+    "nullProperty": null,
+    "stringProperty": "hello",
+    "malformedHereWithCommas": 12,,,,
+    "arrayProperty": [
+      {
+        "propertyOne": 1,
+        "propertyTwo": "here"
+      },
+      {
+        "propertyOne": 2,
+        "propertyTwo": "there"
+      }
+    ],
+    "booleanProperty": true
+}
