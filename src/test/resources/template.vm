@@ -1,0 +1,37 @@
+#set($source = $input.path('$'))
+{
+  "source": {
+    "integerProperty": $source.integerProperty,
+    "numberProperty": $source.numberProperty,
+    "nullPropertyInQuotes": "$source.nullProperty",
+    "stringProperty": "$source.stringProperty",
+    "arrayProperty": $source.arrayProperty,
+    "arrayPropertySize": $source.arrayProperty.size(),
+    "booleanProperty": $source.booleanProperty,
+    "missingProperty": "$source.missingProperty"
+  },
+  "input-json":{
+    "integerPropertyViaJson": $input.json('$.integerProperty'),
+    "numberPropertyViaJson": $input.json('$.numberProperty'),
+    "nullPropertyViaJson": $input.json('$.nullProperty'),
+    "stringPropertyViaJson": $input.json('$.stringProperty'),
+    "arrayPropertyViaJson": $input.json('$.arrayProperty'),
+    "arrayPropertyTestViaJson": $input.json('$.arrayProperty[0].test'),
+    "booleanPropertyViaJson": $input.json('$.booleanProperty'),
+    "missingPropertyViaJson": $input.json('$.missingProperty')
+  },
+  "property-internal-types":  {
+    "integerProperty": $source.integerProperty.getClass().getName(),
+    "numberProperty": $source.numberProperty.getClass().getName(),
+    "nullPropertyInQuotes": "$source.nullProperty.getClass().getName()",
+    "stringProperty": $source.stringProperty.getClass().getName(),
+    "arrayProperty": $source.arrayProperty.getClass().getName(),
+    "booleanProperty": $source.booleanProperty.getClass().getName(),
+    "missingProperty": "$source.missingProperty.getClass().getName()"
+  },
+  "util": {
+    "base64EncodedStringProperty": "$util.base64Encode($source.stringProperty)",
+    "originalStringPropertyDecoded": "$util.base64Decode($util.base64Encode($source.stringProperty))"
+  }
+
+}

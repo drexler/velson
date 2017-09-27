@@ -13,6 +13,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.log.NullLogChute;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.apache.velocity.tools.ToolManager;
+import org.apache.commons.io.FilenameUtils;
 
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -70,7 +71,7 @@ public class VelsonEngine
       }
       else
       {
-         engine.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, templatePath);
+         engine.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, FilenameUtils.getFullPathNoEndSeparator(templatePath));
       }
    }
 
@@ -82,7 +83,7 @@ public class VelsonEngine
       try
       {
          engine.init();
-         Template template = engine.getTemplate(templatePath);
+         Template template = engine.getTemplate(FilenameUtils.getName(templatePath));
          jsonString    = getFileContents(jsonFile);
          formattedJson = TransformerUtils.formatJson(jsonString);
 
@@ -113,11 +114,17 @@ public class VelsonEngine
       }
    }
 
-   private String getFileContents(String fileName) throws IOException
+   private String getFileContents(String file) throws IOException
    {
-      ClassLoader classLoader = getClass().getClassLoader();
-      File        file        = new File(classLoader.getResource(fileName).getFile());
-
-      return new String(Files.readAllBytes(Paths.get(file.getAbsolutePath())));
+      if (locale == ResourceLocale.classpath)
+      {
+         ClassLoader classLoader  = getClass().getClassLoader();
+         File        resourceFile = new File(classLoader.getResource(file).getFile());
+         return new String(Files.readAllBytes(Paths.get(resourceFile.getAbsolutePath())));
+      }
+      else
+      {
+         return new String(Files.readAllBytes(Paths.get(file)));
+      }
    }
 }
