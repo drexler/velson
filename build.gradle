@@ -2,12 +2,28 @@
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
+apply plugin: 'eu.appsatori.fatjar'
 
 archivesBaseName = "velson"
 version = '0.1.0'
 
 repositories {
     mavenCentral()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
+    }
+}
+
+// velson-node jar with all dependent jars bundled.
+fatJar {
+    baseName = project.name + '-node'
 }
 
 dependencies {
