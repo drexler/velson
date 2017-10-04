@@ -2,28 +2,12 @@
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
-apply plugin: 'eu.appsatori.fatjar'
 
 archivesBaseName = "velson"
 version = '0.1.0'
 
 repositories {
     mavenCentral()
-}
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
-    }
-}
-
-// velson-node jar with all dependent jars bundled.
-fatJar {
-    baseName = project.name + '-node'
 }
 
 dependencies {
@@ -35,13 +19,27 @@ dependencies {
      [group: 'com.jayway.jsonpath', name: 'json-path', version: '2.3.0'],
      [group: 'commons-io', name: 'commons-io', version: '2.5']
    )
-   // Custom json-smart implemented as a linked hash map
    // Custom velocity 1.7 build.
    compile fileTree(dir: 'libs', include: '*.jar')
    runtime(
      [group: 'commons-digester', name: 'commons-digester', version: '2.1']
    )
    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    from {
+        (configurations.compile).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+
+        (configurations.runtime).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes("Main-Class": "com.drexler.velson.Velson" )
+    }
 }
 
 task wrapper(type: Wrapper) {
