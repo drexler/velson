@@ -27,7 +27,7 @@ Built-in Functions | Description | Supported |
 
 
 ##### Prerequisite
-[Java 1.8](https://aws.amazon.com/documentation/apigateway/) or greater.
+[Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) or greater.
 
 ##### File Description
 * src/main/resources
