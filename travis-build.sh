@@ -10,4 +10,7 @@ echo "Cleaning..."
 ./gradlew clean check install --stacktrace
 
 echo "Building"
-./gradlew assemble
+./gradlew build
+
+echo "Tests"
+./gradlew test

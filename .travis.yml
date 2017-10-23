@@ -6,6 +6,7 @@ matrix:
   - os: linux
     dist: trusty
     sudo: required
+script: "./travis-build.sh"
 before_install:
 - openssl aes-256-cbc -K $encrypted_8999b5e80790_key -iv $encrypted_8999b5e80790_iv
   -in gradle.properties.enc -out gradle.properties -d
