@@ -1,13 +1,11 @@
-#setup environment
 language: java
-
-# build results
 notifications:
-    email: false
-
-# target OS
+  email: false
 matrix:
   include:
-    - os: linux
-      dist: trusty
-      sudo: required
+  - os: linux
+    dist: trusty
+    sudo: required
+before_install:
+- openssl aes-256-cbc -K $encrypted_0ed105e819ca_key -iv $encrypted_0ed105e819ca_iv
+  -in gradle.properties.enc -out gradle.properties -d
