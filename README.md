@@ -41,6 +41,7 @@ Built-in Functions | Description | Supported |
 - Clone the project.
 - Building: `./gradlew assemble`
 - Running: `./gradlew run`
+- Testing: `./gradlew test`
 
 If using a text editor like Atom or Visual Studio Code, there are plugins/packages that make it easy to execute these commands without resorting to
 the terminal. See:
