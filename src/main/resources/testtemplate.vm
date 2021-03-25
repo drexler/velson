@@ -31,7 +31,8 @@
   },
   "util": {
     "base64EncodedStringProperty": "$util.base64Encode($source.stringProperty)",
-    "originalStringPropertyDecoded": "$util.base64Decode($util.base64Encode($source.stringProperty))"
+    "originalStringPropertyDecoded": "$util.base64Decode($util.base64Encode($source.stringProperty))", 
+    "stringPropertyWithEscaping": "$util.escapeJavaScript($source.stringPropertyEscapeNeeded)"
   }
 
 }

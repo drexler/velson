@@ -2,6 +2,7 @@ package com.drexler.velson.tools;
 
 import java.util.Base64;
 import java.io.UnsupportedEncodingException;
+import org.apache.commons.lang.StringEscapeUtils;
 
 /**
  * UtilTool provides a custom Velocity Tool similar to AWS built-in $util variable
@@ -22,5 +23,9 @@ public class UtilTool
    {
      byte[] decodedData= Base64.getDecoder().decode(data);
      return new String(decodedData, "utf-8");
+   }
+
+   public String escapeJavaScript(String data) {
+      return StringEscapeUtils.escapeJavaScript(data);
    }
 }
