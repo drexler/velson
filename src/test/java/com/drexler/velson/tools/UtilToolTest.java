@@ -39,4 +39,13 @@ public class UtilToolTest
       }
       assertEquals(expectedDecodedString, result);
    }
+
+   @Test
+   public void escapeJavascriptUsesJavascriptEscapingRules()
+   {
+      UtilTool util = new UtilTool();
+      String original = "Oh no you don't";
+      String expected = "Oh no you don\\'t";      // Note: additional \ is added here for escaping within this. Upgrade to latest Java to use backticks
+      assertEquals(expected, util.escapeJavaScript(original));
+   }
 }
