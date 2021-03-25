@@ -22,6 +22,7 @@ Built-in Functions | Description | Supported |
 *$input.path(x)* | Takes a JSONPath expression string (x) and returns an object representation of the result. |`yes`
 *$util.base64Encode()* | Encodes the data into a base64-encoded string. |`yes`
 *$util.base64Decode()* | Decodes the data from a base64-encoded string. |`yes`
+*$util.escapeJavaScript()* | Escapes the characters in a string using JavaScript string rules. |`yes`
 
 
 
